@@ -1,1 +1,1 @@
-# kafka-graphql
+# Kafka GraphQL
