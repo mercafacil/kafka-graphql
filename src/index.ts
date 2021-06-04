@@ -7,9 +7,9 @@ export class GraphqlHandler implements IKafkaHandler {
   schema: GraphQLSchema
   operations: IGenericObject
   args: IGenericObject
-  context: (msgVariables:IGenericObject) => IGenericObject
+  context: (topic: string, msgVariables:IGenericObject) => IGenericObject
 
-  constructor(schema: GraphQLSchema, operations: IGenericObject, args: IGenericObject, context: (msgVariables: IGenericObject) => IGenericObject ) {
+  constructor(schema: GraphQLSchema, operations: IGenericObject, args: IGenericObject, context: (topic: string, msgVariables: IGenericObject) => IGenericObject ) {
     this.schema = schema
     this.operations = operations
     this.args = args
@@ -27,7 +27,7 @@ export class GraphqlHandler implements IKafkaHandler {
       this.schema,
       this.operations[topic],
       null,
-      this.context(variablesValues),
+      this.context(topic, variablesValues),
       variablesValues
     )
 
