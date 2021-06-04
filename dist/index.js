@@ -18,7 +18,7 @@ class GraphqlHandler {
     }
     async run(topic, message) {
         const variablesValues = this.resolveVariablesValues(JSON.parse(message.value.toString()));
-        const result = await graphql_1.graphql(this.schema, this.operations[topic], null, this.context(variablesValues), variablesValues);
+        const result = await graphql_1.graphql(this.schema, this.operations[topic], null, this.context(topic, variablesValues), variablesValues);
         if (result.data)
             console.log(JSON.stringify(result.data, null, 2));
         if (result.errors)
